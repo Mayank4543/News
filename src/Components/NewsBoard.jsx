@@ -9,7 +9,12 @@ const NewsBoard = ({ country, category }) => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=26128182fdf248ec970532234c9b404c`;
+        // Access environment variable directly
+        // console.log("VITE_API_KEY:", import.meta.env.VITE_API_KEY);
+        let url = `http://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${
+          import.meta.env.VITE_API_KEY
+        }`;
+
         let response = await fetch(url);
         let data = await response.json();
         setArticles(data.articles);
