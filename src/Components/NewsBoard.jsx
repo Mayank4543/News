@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import NewsItem from "./NewsItem";
-
+import axios from "axios";
 const NewsBoard = ({ country, category }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,13 +11,13 @@ const NewsBoard = ({ country, category }) => {
       try {
         // Access environment variable directly
         // console.log("VITE_API_KEY:", import.meta.env.VITE_API_KEY);
-        let url = `http://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${
+        let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${
           import.meta.env.VITE_API_KEY
         }`;
 
-        let response = await fetch(url);
-        let data = await response.json();
-        setArticles(data.articles);
+        let response = await axios.get(url);
+        // let data = await response.json();
+        setArticles(response.data.articles);
       } catch (err) {
         setError(err);
       } finally {
