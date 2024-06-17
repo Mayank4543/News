@@ -16,6 +16,7 @@ const NewsBoard = ({ country, category }) => {
         }`;
 
         let response = await axios.get(url);
+        // console.log(first)
         // let data = await response.json();
         setArticles(response.data.articles);
       } catch (err) {
