@@ -10,7 +10,7 @@ const NewsBoard = ({ country, category }) => {
     const fetchNews = async () => {
       try {
         // Access environment variable directly
-        // console.log("VITE_API_KEY:", import.meta.env.VITE_API_KEY);
+        console.log("VITE_API_KEY:", import.meta.env.VITE_API_KEY);
         let url = `http://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${
           import.meta.env.VITE_API_KEY
         }`;
